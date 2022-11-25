@@ -5,6 +5,9 @@ import { CustomerComponent } from '../Customer/customer.component';
 import { SalesComponent } from '../Sales/sales.component';
 import { HomeRoutingModule } from './home-routingmodule';
 import { HomeComponent } from './home.component';
+import {AccordionModule} from 'primeng/accordion';
+import {MenuModule} from 'primeng/menu';
+
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { HomeComponent } from './home.component';
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    AccordionModule,
+    MenuModule,
+  
   ],
   providers: [],
   bootstrap: [HomeComponent]
