@@ -13,7 +13,7 @@ constructor(){
         FirstName:['',[Validators.required]],
         LastName:['',[Validators.required]],
         Address:['',[Validators.required]],
-        PhoneNumber:['',[Validators.required]]
+        PhoneNumber:['',[Validators.required]]   //validation
     })
 }
 
