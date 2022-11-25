@@ -7,7 +7,7 @@ import { HomeComponent } from './home.component';
 import {AccordionModule} from 'primeng/accordion';
 import {MenuModule} from 'primeng/menu';
 import { CustomerComponent } from '../Customer/customer.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,7 +22,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeRoutingModule,
     AccordionModule,
     MenuModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
+    
   
   ],
   providers: [],

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Customer } from '../Model/_Customer';
+import { Sales } from '../Model/_Sales';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,15 @@ getCustomerById(customerId:any):Observable<any>{
 }
 deleteCustomer(customerId:any):Observable<any>{
   return this.http.delete("https://localhost:7013/api/Customer/"+customerId,{responseType: 'json'});
+}
+getFuelType():Observable<any>{
+  return this.http.get("https://localhost:7013/api/FuelTypes",{responseType:'json'});
+}
+postSales(sales:any):Observable<any>{
+  return this.http.post("https://localhost:7013/api/Sales/",sales,{responseType:'json'});
+}
+getSaleList():Observable<any>{
+  return this.http.get("https://localhost:7013/api/Sales",{responseType:'json'});
 }
 
 }

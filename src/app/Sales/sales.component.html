@@ -1,1 +1,109 @@
-Saels hello
+ <!-- Button trigger modal -->
+ <button style="float: right; margin-right: 227px;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    New Sale
+   </button>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">S.N</th>
+        <th scope="col">Date</th>
+        <th scope="col">Customer</th>
+        <th scope="col">Quantity (litres)</th>
+        <th scope="col">Rate</th>
+        <th scope="col">Total Rate</th>
+        <th scope="col">Remarks</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of saleList">
+         <td>{{data.id}}</td>
+        <td>{{data.date}}</td>
+        <td>{{data.customer.firstName + " " + data.customer.lastName}}</td>
+        <td>{{data.quantity}}</td>
+        <td>{{data.fuelType.rate}}</td>
+        <td>{{data.totalRate}}</td>
+        <td>{{data.remarks}}</td>
+        <!-- <td>{{data.phoneNumber}}</td> -->
+        <td>
+            <!-- <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editCustomerDetail" 
+            (click)="listCustomerById(data.id)" >Edit</button>
+            <button style="margin-left: 5px;" class="btn btn-danger" 
+            (click)="removeCustomer(data.id)">Delete</button> -->
+        </td>
+        </tr>
+    </tbody>
+  </table>
+  <!-- Modal for New Customer -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="sales.salesFormGroup">
+                <div class="row">
+                    <div class="form-outline">
+                        <label class="form-label" for="Quantity">Date</label>
+                        <input type="text" id="quantity" [(ngModel)]="formattedDate" class="form-control form-control-lg"
+                        [ngModelOptions]="{standalone: true}" />
+                      </div>
+                  <div class="col-md-6 mb-4">
+  
+                    <div class="form-outline">
+                      <label class="form-label" for="customerName">Customer Name</label>
+                      <select name="" id="" class="form-select" formControlName="CustomerName" (change)="OnCustomerChange($event)">
+                        <option value="{{data.id}}" *ngFor="let data of customerList" >{{data.firstName}}&nbsp;{{data.lastName}}</option>
+                      </select>
+                    </div>
+                    <div class="form-outline">
+                        <label class="form-label" for="Quantity">Quantity</label>
+                        <input type="text" id="quantity" formControlName="Quantity" 
+                        (ngModelChange)="calculate()"class="form-control form-control-lg" />
+                      </div>
+  
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                        <label class="form-label" for="itemName">Item Name</label>
+                        <select name="" id="" class="form-select" formControlName="ItemName" (change)="OnItemNameChange($event)"> 
+                          <option value="{{item.id}}" *ngFor="let item of fuelTypeList" >{{item.fuel}}</option>
+                        </select>
+                      </div>
+                   
+                    <div class="form-outline">
+                        <label class="form-label" for="rate">Rate</label>
+                        <input type="email" id="rate" formControlName="Rate" (ngModelChange)="calculate()" [attr.disabled]="true"
+                        class="form-control form-control-lg" />
+                      </div>
+                  </div>
+                </div>
+
+  
+                <div class="row">
+                  <div class="col-md-6 mb-4 pb-2">
+  
+                    <div class="form-outline">
+                      <label class="form-label" for="totalRate">Total</label>
+                      <input type="tel" id="totalRate" formControlName="TotalRate" class="form-control form-control-lg" [attr.disabled]="true"/>
+                    </div>
+  
+                  </div>
+                  <div class="col-md-6 mb-4 pb-2">
+  
+                    <div class="form-outline">
+                      <label class="form-label" for="remark">Remark</label>
+                      <input type="tel" id="remark" formControlName="Remarks" class="form-control form-control-lg" />
+                    </div>
+  
+                  </div>
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="addSales()">Save changes</button>
+        </div>
+      </div>
+    </div>
