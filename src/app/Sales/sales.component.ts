@@ -74,6 +74,9 @@ ngOnInit(){
     this.service.postSales(salesObj).subscribe(
       res=>{
         this.getSaleList();
+        this.sales.salesFormGroup.reset();
+        this.sales= new Sales();
+        alert("Sales Added succesfully");
       },
       err=>{
         console.log(err);
