@@ -1,0 +1,38 @@
+.sidebar{
+    background-color: aqua;
+    height: 100vh;
+    width: 10rem;
+
+}
+ul{
+    list-style: none;
+}
+.title{
+    background-color: #06067e;
+    color: #ffff;
+}
+li{
+    position: relative;
+    padding: .5rem 0;
+}
+li:after{
+    position: absolute;
+    left: 0;
+    top: 100%;
+    content: '';
+    width: 5rem;
+    height: 2px;
+    background-color: #ffff;
+    transform: scale(0);
+    transition: .5s ease-in-out;
+}
+li:hover::after{
+    transform: scale(1);
+}
+.home-page{
+    display: flex;
+    flex-direction: row;
+}
+.active{
+    background-color: red;
+}

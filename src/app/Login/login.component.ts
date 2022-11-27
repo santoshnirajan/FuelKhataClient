@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from './_userCredintials';
+import { CommonService } from '../Shared/common.service';
+import { User } from './User';
 
 @Component({
   selector: 'app-login',
@@ -10,23 +11,19 @@ import { User } from './_userCredintials';
 export class LoginComponent {
   title = 'FuelKhata';
   loginRequest:User=new User();
-  constructor(private router:Router){}
+  userCredentials = {
+    username: "santosh@gmail.com",
+    password: "hello123"
+  };
+  constructor(private router:Router, private commonService: CommonService){}
 
   login(){
-    this.router.navigateByUrl('/Home');
-  }
-
-  user:User=new User();
-  email:any;
-  password:any;
-  
-
-  doLogin(){
-  if(this.email==this.user.email&&this.password==this.user.password){
-  this.router.navigateByUrl("/Customer");
-  }
-  else{
-    alert("Please enter correct credentials.")
-  }
+    if(this.loginRequest.email === this.userCredentials.username && this.loginRequest.password === this.userCredentials.password){
+      this.commonService.isLoggedIn = true;
+      this.router.navigateByUrl("/Home/Customer");
+      }
+      else{
+        alert("Please enter correct credentials.")
+      }  
   }
 }
